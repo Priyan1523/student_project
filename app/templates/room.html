@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Hostel & Room Accommodations</h2>
+<form method="GET">
+    <div class="form-group">
+        <input type="text" name="search" placeholder="Search by location, amenities or title...">
+    </div>
+    <button type="submit">Search</button>
+</form>
+<br>
+{% for room in rooms %}
+<div class="card">
+    <h3>{{ room.title }} - ₹{{ room.price }}/month</h3>
+    <p><strong>Location:</strong> {{ room.location }}</p>
+    <p><strong>Amenities:</strong> {{ room.amenities }}</p>
+    <p><strong>Mess Included:</strong> {{ 'Yes' if room.mess_included else 'No' }}</p>
+    <p>{{ room.description }}</p>
+</div>
+{% else %}
+<p>No listings available right now.</p>
+{% endfor %}
+{% endblock %}

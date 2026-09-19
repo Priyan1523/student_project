@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Mess & Food Quality Reviews</h2>
+<form method="POST" class="card">
+    <h3>Add Mess Review</h3>
+    <div class="form-group"><input type="text" name="mess_name" placeholder="Mess / Canteen Name" required></div>
+    <div class="form-group"><input type="number" name="rating" min="1" max="5" placeholder="Food Rating (1-5)" required></div>
+    <div class="form-group"><input type="number" name="hygiene_rating" min="1" max="5" placeholder="Hygiene Rating (1-5)" required></div>
+    <div class="form-group"><textarea name="review_text" placeholder="Detail mess timings, dietary options, etc..."></textarea></div>
+    <button type="submit">Publish Review</button>
+</form>
+
+<h3>Student Reviews</h3>
+{% for review in reviews %}
+<div class="card">
+    <h4>{{ review.mess_name }}</h4>
+    <p><strong>Food Quality:</strong> {{ review.rating }}/5 | <strong>Hygiene:</strong> {{ review.hygiene_rating }}/5</p>
+    <p>{{ review.review_text }}</p>
+</div>
+{% endfor %}
+{% endblock %}

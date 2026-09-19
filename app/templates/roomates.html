@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Compatible Roommate Matches</h2>
+{% for match in matches %}
+<div class="card">
+    <h3>{{ match.full_name or match.username }}</h3>
+    <p><strong>Course:</strong> {{ match.course or 'N/A' }} | <strong>Location:</strong> {{ match.location or 'N/A' }}</p>
+    <p><strong>Preferences:</strong> {{ match.food_habit }} | {{ match.smoking_preference }} | {{ match.study_habit }}</p>
+    <p><strong>Bio:</strong> {{ match.bio }}</p>
+</div>
+{% else %}
+<p>No matches found yet. Make sure your profile preferences are filled out!</p>
+{% endfor %}
+{% endblock %}
